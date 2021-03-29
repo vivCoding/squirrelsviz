@@ -7,15 +7,56 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <h1 id = "title">Squirrels in Central Park</h1>
+    <h1 id = "title">Squirrels in Central Park 2018</h1>
     <div id = "links">
         <a href = "https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw">Original Data</a>
-        <a href = "">GitHub</a>
+        <a href = "https://github.com/vivCoding/squirrelsviz">GitHub</a>
     </div>
     <div id = "stuff">
         <div id = "controls">
             <h2>About</h2>
             <p>This data visualization shows squirrel sightings over the period of October 2018 in Central Park. You can use the controls below to see the number of squirrel sightings over time.</p>
+            <p>Created for CGT 290</p>
+            <h2>Filters</h2>
+            <h3>Date</h3>
+            <p>
+                <label>Show all dates:</label><input type = "checkbox" id = "showAllDates" checked="true" onchange = "dateSelectorHandler()"/>
+            </p>
+            <p>
+                <label>Show specific date: </label><i><label id  = "dateLabel">All</label></i>
+                <br>
+                <input type = "range" id = "dateSelector" min = "10062018" max = "10202018" step = "10000" oninput="dateSelectorHandler(this.value)" list = "tickmarks">
+                <datalist id = "tickmarks">
+                    <option value="10062018"></option>
+                    <option value="10072018"></option>
+                    <option value="10082018"></option>
+                    <option value="10102018"></option>
+                    <option value="10122018"></option>
+                    <option value="10132018"></option>
+                    <option value="10142018"></option>
+                    <option value="10172018"></option>
+                    <option value="10172018"></option>
+                    <option value="10182018"></option>
+                    <option value="10192018"></option>
+                    <option value="10192018"></option>
+                    <option value="10202018"></option>
+                </datalist>
+            </p>
+            <h3>Fur Color</h3>
+            <p>
+                <label>All: </label> <input type = "radio" value = "all" name = "furColor" onchange = "furColorHandler(this.value)" checked="true"> 
+                <label>Unknown: </label> <input type = "radio" value = "unknown" name = "furColor"  onchange = "furColorHandler(this.value)"><br>
+                <label>Black: </label> <input type = "radio" value = "Black" name = "furColor"  onchange = "furColorHandler(this.value)">
+                <label>Cinnamon: </label> <input type = "radio" value = "Cinnamon" name = "furColor"  onchange = "furColorHandler(this.value)"><br>
+                <label>Gray: </label> <input type = "radio" value = "Gray" name = "furColor"  onchange = "furColorHandler(this.value)"><br>
+            </p>
+            <h3>Age</h3>
+            <p>
+                <label>All: </label><input type = "radio" value = "all" name = "age" checked = "true" onchange = "ageHandler(this.value)">
+                <label>Unknown: </label><input type = "radio" value = "?" name = "age" onchange = "ageHandler(this.value)"><br>
+                <label>Adult: </label><input type = "radio" value = "Adult" name = "age" onchange = "ageHandler(this.value)">
+                <label>Juvenile: </label><input type = "radio" value = "Juvenile" name = "age" onchange = "ageHandler(this.value)"><br>
+            </p>
         </div>
         <canvas id = "canvas" width = "659" height = "739" color = "white"></canvas>
     </div>
